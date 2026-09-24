@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, Download } from "lucide-react";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
@@ -25,7 +24,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             <h1>{isTr ? "Güvenli sistemler için araştırma ve mühendislik." : "Research and engineering for secure systems."}</h1>
             <p className="hero-intro">{isTr ? "Siber güvenlik, dijital deliller, teknoloji hukuku ve büyük ölçekli bilgi sistemleri üzerine akademik araştırma ile uygulama deneyimi." : "Academic research and applied experience in cybersecurity, digital evidence, technology law, and large-scale information systems."}</p>
             <div className="hero-actions">
-              <Link className="button button-primary" href={"/" + lang + "/publications"}>{isTr ? "Yayınları incele" : "Explore publications"} <ArrowUpRight size={17} /></Link>
+              <a className="button button-primary" href={"/" + lang + "/publications"}>{isTr ? "Yayınları incele" : "Explore publications"} <ArrowUpRight size={17} /></a>
               {profile.cvPath ? <a className="button button-secondary" href={profile.cvPath} download>{isTr ? "CV’yi indir" : "Download CV"} <Download size={16} /></a> : <span className="button button-muted" aria-disabled="true">{isTr ? "CV hazırlanıyor" : "CV in preparation"} <Download size={16} /></span>}
             </div>
           </div>
@@ -45,15 +44,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         {(selectedPublications.length > 0 || selectedProjects.length > 0) && <section className="shell selected-work">
           <div className="section-heading"><div><p className="section-index">02</p><h2>{isTr ? "Seçili çalışmalar" : "Selected work"}</h2></div></div>
           <div className="work-grid">
-            {selectedPublications.map((item) => <article key={item.id} className="work-card"><span>{item.year} · {item.type}</span><h3>{item.title}</h3><p>{item.venue}</p><Link href={"/" + lang + "/publications"}>{isTr ? "Yayını gör" : "View publication"} ↗</Link></article>)}
-            {selectedProjects.map((item) => <article key={item.slug} className="work-card"><span>{item.period} · {item.kind}</span><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><Link href={"/" + lang + "/projects/" + item.slug}>{isTr ? "Projeyi gör" : "View project"} ↗</Link></article>)}
+            {selectedPublications.map((item) => <article key={item.id} className="work-card"><span>{item.year} · {item.type}</span><h3>{item.title}</h3><p>{item.venue}</p><a href={"/" + lang + "/publications"}>{isTr ? "Yayını gör" : "View publication"} ↗</a></article>)}
+            {selectedProjects.map((item) => <article key={item.slug} className="work-card"><span>{item.period} · {item.kind}</span><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><a href={"/" + lang + "/projects/" + item.slug}>{isTr ? "Projeyi gör" : "View project"} ↗</a></article>)}
           </div>
         </section>}
 
         <section className="shell archive-cta">
           <div><p className="section-index">02</p><h2>{isTr ? "Akademik ve uygulamalı çalışmalar" : "Academic and applied work"}</h2></div>
           <p>{isTr ? "Makaleler, kitaplar ve uygulamalı projeler; güvenlik, yönetişim ve teknolojinin kesişimindeki çalışmaları bir araya getirir." : "Articles, books, and applied projects bring together work at the intersection of security, governance, and technology."}</p>
-          <div><Link href={"/" + lang + "/publications"}>{isTr ? "Yayınlar" : "Publications"} <ArrowUpRight size={17} /></Link><Link href={"/" + lang + "/projects"}>{isTr ? "Projeler" : "Projects"} <ArrowUpRight size={17} /></Link></div>
+          <div><a href={"/" + lang + "/publications"}>{isTr ? "Yayınlar" : "Publications"} <ArrowUpRight size={17} /></a><a href={"/" + lang + "/projects"}>{isTr ? "Projeler" : "Projects"} <ArrowUpRight size={17} /></a></div>
         </section>
       </main>
     </PageShell>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Language } from "@/lib/site-content";
 
@@ -24,18 +23,18 @@ export function SiteHeader({ lang }: { lang: Language }) {
   ];
   return (
     <header className="site-header">
-      <Link href={`/${lang}`} className="wordmark" aria-label={lang === "tr" ? "Dr. Hakan Yıldırım ana sayfa" : "Dr. Hakan Yıldırım home"}>
+      <a href={`/${lang}`} className="wordmark" aria-label={lang === "tr" ? "Dr. Hakan Yıldırım ana sayfa" : "Dr. Hakan Yıldırım home"}>
         <span>HY</span><strong>Dr. Hakan Yıldırım</strong>
-      </Link>
+      </a>
       <nav className="desktop-nav" aria-label={t.menu}>
-        {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+        {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
       </nav>
       <div className="header-actions">
-        <Link className="language-link" href={alternatePath}>{lang === "tr" ? "EN" : "TR"}</Link>
+        <a className="language-link" href={alternatePath}>{lang === "tr" ? "EN" : "TR"}</a>
         <details className="mobile-menu">
           <summary>{t.menu}</summary>
           <nav aria-label={t.menu}>
-            {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+            {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
           </nav>
         </details>
       </div>
