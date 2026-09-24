@@ -1,3 +1,5 @@
+import { publicationOverviews } from "@/lib/publication-overviews";
+
 export type Language = "en" | "tr";
 export type PublicationType = "article" | "conference" | "book" | "chapter";
 type Bilingual = Record<Language, string>;
@@ -5,7 +7,7 @@ type Bilingual = Record<Language, string>;
 export type Publication = {
   id: string; title: string; authors: string[]; year: number; venue: string;
   type: PublicationType; doi?: string; openAccessUrl?: string; bibtex?: string;
-  summary?: Bilingual; selected?: boolean;
+  summary?: Bilingual; summaryKind?: "topic"; sourceUrl?: string; selected?: boolean;
 };
 export type Project = {
   slug: string; title: Bilingual; summary: Bilingual; problem: Bilingual;
@@ -23,7 +25,7 @@ export const researchAreas = [
   { id: "information-systems", title: { en: "Information Systems & Technology Projects", tr: "Bilgi Sistemleri ve Teknoloji Projeleri" }, description: { en: "Large-scale ICT infrastructures, capability assessment, digital transformation, and applied R&D.", tr: "Büyük ölçekli BT altyapıları, yetkinlik değerlendirmesi, dijital dönüşüm ve uygulamalı Ar-Ge." } },
 ] as const;
 
-export const publications: Publication[] = [
+const publicationRecords: Publication[] = [
   { id: "dual-key-2026", title: "Dual Key-Wrapping Architecture for Query-Level Cryptographic Access Governance of Protected Digital Records in Institutional Information Systems", authors: ["Hakan Yıldırım"], year: 2026, venue: "Acta Infologica", type: "article", selected: true, summary: { en: "Proposes a dual key-wrapping architecture that keeps protected records encrypted by default and authorizes narrowly scoped queries instead of broad database access. Prototype scenarios test separation of privileged roles, personal and lawful access paths, data minimization, and tamper-resistant auditing.", tr: "Korunan kayıtları varsayılan olarak şifreli tutan ve geniş veritabanı yetkileri yerine amaç ve kapsamla sınırlandırılmış sorguları yetkilendiren çift anahtar sarma mimarisi önerir. Prototip senaryolar; ayrıcalıklı rollerin ayrılmasını, kişisel ve hukuki erişim yollarını, veri minimizasyonunu ve denetim izlerini sınar." } },
   { id: "digital-risk-2026", title: "Digital Risk Perceptions and Trust-Enhancing Governance in Türkiye: Evidence from Public Digital-Service Users", authors: ["Hakan Yıldırım", "Cihan Ünal"], year: 2026, venue: "Ethics and Information Technology", type: "article", selected: true, summary: { en: "Examines how users of highly digitized public services perceive risks and which safeguards they believe would strengthen trust. Survey findings show that frequent use does not eliminate concern, while sanctions, contestability, independent oversight, transparency, and effective redress remain central to trusted governance.", tr: "Yoğun dijital kamu hizmeti kullanan kişilerin risk algısını ve güveni artıracağını düşündükleri güvenceleri inceler. Bulgular, sık kullanımın kaygıyı ortadan kaldırmadığını; yaptırım, itiraz edebilme, bağımsız denetim, şeffaflık ve etkili başvuru yollarının güvenilir yönetişim için merkezî olduğunu gösterir." } },
   { id: "chip-crypto-2026", title: "Assessing security and legal reliability in chip-based cryptographic systems: a normative assessment framework", authors: ["Hakan Yıldırım", "Cihan Ünal"], year: 2026, venue: "Cyber Security", type: "article", summary: { en: "Develops a framework linking cryptographic security to transparency, verifiability, auditability, source reliability, and proportionality. Its application to identity, passport, signature, payment, and SIM systems suggests that closed implementation layers can limit legal reliability even when cryptographic primitives are strong.", tr: "Kriptografik güvenliği şeffaflık, doğrulanabilirlik, denetlenebilirlik, kaynak güvenilirliği ve ölçülülükle ilişkilendiren bir çerçeve geliştirir. Kimlik, pasaport, imza, ödeme ve SIM sistemlerine uygulama; güçlü kriptografiye rağmen kapalı uygulama katmanlarının hukuki güvenilirliği sınırlayabildiğini gösterir." } },
@@ -48,6 +50,11 @@ export const publications: Publication[] = [
   { id: "document-privacy-2026", title: "Belge ve Mahremiyet", authors: ["Hakan Yıldırım", "Cihan Ünal", "Ramazan Yıldırım"], year: 2026, venue: "Belge Yönetimi Kitabı · 20 sayfa", type: "chapter" },
   { id: "basic-it-2024", title: "İnternet Teknolojileri; E-Devlet Uygulamaları; Bilgisayar Ağ Güvenliği", authors: ["Hakan Yıldırım"], year: 2024, venue: "Temel Bilgi Teknolojileri 1–2 · Nobel Akademik · ISBN 978-625-371-659-2", type: "chapter" },
 ];
+
+export const publications: Publication[] = publicationRecords.map((publication) => ({
+  ...publication,
+  ...publicationOverviews[publication.id],
+}));
 
 const project = (slug: string, title: Bilingual, period: string, status: "ongoing" | "completed", kind: "academic" | "industry", summary: Bilingual, problem: Bilingual, contribution: Bilingual, selected = false, outcome?: Bilingual): Project => ({ slug, title, period, status, kind, summary, problem, contribution, selected, outcome });
 export const projects: Project[] = [

@@ -35,10 +35,10 @@ export function PublicationsFilter({ lang, items }: { lang: Language; items: Pub
       </div>
       {visible.length ? (
         <div className="publication-list">{visible.map((item) => (
-          <article key={item.id} className="publication-item">
+          <article key={item.id} id={item.id} className="publication-item">
             <div><span className="record-type">{typeLabels[lang][item.type]}</span><span>{item.year}</span></div>
-            <h2>{item.title}</h2><div className="publication-meta"><p>{item.authors.join(", ")}</p><p>{item.venue}</p>{item.summary && <p className="publication-summary">{item.summary[lang]}</p>}</div>
-            <div className="record-links">{item.doi && <a href={`https://doi.org/${item.doi}`}>DOI ↗</a>}{item.openAccessUrl && <a href={item.openAccessUrl}>{t ? "Açık erişim" : "Open access"} ↗</a>}{item.bibtex && <a href={item.bibtex}>BibTeX ↗</a>}</div>
+            <h2>{item.title}</h2><div className="publication-meta"><p>{item.authors.join(", ")}</p><p>{item.venue}</p>{item.summary && <div className="publication-overview"><span className="overview-kicker">{item.summaryKind === "topic" ? (t ? "Konu tanıtımı" : "Topic overview") : (t ? "Özgün özet" : "Editorial summary")}</span><p className="publication-summary">{item.summary[lang]}</p></div>}</div>
+            <div className="record-links">{item.doi && <a href={`https://doi.org/${item.doi}`}>DOI ↗</a>}{item.openAccessUrl && <a href={item.openAccessUrl}>{t ? "Açık erişim" : "Open access"} ↗</a>}{item.sourceUrl && <a href={item.sourceUrl}>{t ? "Kaynak kaydı" : "Source record"} ↗</a>}{item.bibtex && <a href={item.bibtex}>BibTeX ↗</a>}</div>
           </article>
         ))}</div>
       ) : <div className="empty-state"><span>00</span><h2>{t ? "Doğrulanmış yayın kayıtları hazırlanıyor." : "Verified publication records are being prepared."}</h2><p>{t ? "Bibliyografik bilgiler, DOI ve erişim bağlantıları kaynaklarıyla birlikte eklenecek." : "Bibliographic details, DOI information, and access links will be added from verified sources."}</p></div>}

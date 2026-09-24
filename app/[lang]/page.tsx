@@ -44,7 +44,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         {(selectedPublications.length > 0 || selectedProjects.length > 0) && <section className="shell selected-work">
           <div className="section-heading"><div><p className="section-index">02</p><h2>{isTr ? "Seçili çalışmalar" : "Selected work"}</h2></div></div>
           <div className="work-grid">
-            {selectedPublications.map((item) => <article key={item.id} className="work-card"><span>{item.year} · {item.type}</span><h3>{item.title}</h3><p>{item.venue}</p><a href={"/" + lang + "/publications"}>{isTr ? "Yayını gör" : "View publication"} ↗</a></article>)}
+            {selectedPublications.map((item) => <article key={item.id} className="work-card">
+              <span>{item.year} · {item.type}</span>
+              <h3>{item.title}</h3>
+              <p className="work-venue">{item.venue}</p>
+              {item.summary && <div className="work-overview"><span className="overview-kicker">{item.summaryKind === "topic" ? (isTr ? "Konu tanıtımı" : "Topic overview") : (isTr ? "Özgün özet" : "Editorial summary")}</span><p className="work-summary">{item.summary[lang]}</p></div>}
+              <a href={`/${lang}/publications#${item.id}`}>{isTr ? "Yayını gör" : "View publication"} ↗</a>
+            </article>)}
             {selectedProjects.map((item) => <article key={item.slug} className="work-card"><span>{item.period} · {item.kind}</span><h3>{item.title[lang]}</h3><p>{item.summary[lang]}</p><a href={"/" + lang + "/projects/" + item.slug}>{isTr ? "Projeyi gör" : "View project"} ↗</a></article>)}
           </div>
         </section>}
