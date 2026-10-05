@@ -27,14 +27,14 @@ export function SiteHeader({ lang }: { lang: Language }) {
         <span>HY</span><strong>Dr. Hakan Yıldırım</strong>
       </a>
       <nav className="desktop-nav" aria-label={t.menu}>
-        {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+        {links.map(([label, href]) => <a key={href} href={href} aria-current={href.includes("#") ? undefined : (pathname.replace(/\/$/, "").startsWith(href) ? "page" : undefined)}>{label}</a>)}
       </nav>
       <div className="header-actions">
         <a className="language-link" href={alternatePath}>{lang === "tr" ? "EN" : "TR"}</a>
         <details className="mobile-menu">
           <summary>{t.menu}</summary>
           <nav aria-label={t.menu}>
-            {links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+            {links.map(([label, href]) => <a key={href} href={href} aria-current={href.includes("#") ? undefined : (pathname.replace(/\/$/, "").startsWith(href) ? "page" : undefined)}>{label}</a>)}
           </nav>
         </details>
       </div>

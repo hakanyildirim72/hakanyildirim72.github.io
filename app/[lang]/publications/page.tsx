@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { InteriorIntro, InteriorOutro } from "@/components/interior-intro";
 import { notFound } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
@@ -15,13 +16,9 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
   const lang = rawLang as Language; const tr = lang === "tr";
   const books = publications.filter((item) => item.type === "book");
   const archive = publications.filter((item) => item.type !== "book");
-  return <PageShell lang={lang}><main>
-    <header className="page-hero shell">
-      <p className="eyebrow">{tr ? "AKADEMİK ÜRETİM" : "ACADEMIC OUTPUT"}</p>
-      <h1>{tr ? "Yayınlar" : "Publications"}</h1>
-      <p>{tr ? "Makaleler, kitaplar ve kitap bölümleri bibliyografik bilgiler ve kısa açıklamalarla sunulur. Erişilebilen yayın kayıtlarından hazırlanan özgün özetlerle, tam özet bulunmayan eserlerin yalnızca kapsamını anlatan konu tanıtımları ayrı etiketlenmiştir." : "Articles, books, and chapters are presented with bibliographic details and short descriptions. Original summaries based on available publication records are distinguished from topic overviews where no full abstract was available."}</p>
-    </header>
-    {books.length > 0 && <section className="shell books-section">
+  return <PageShell lang={lang}><main className="interior-page">
+    <InteriorIntro lang={lang} eyebrow={tr ? "AKADEMİK ÜRETİM" : "ACADEMIC OUTPUT"} title={tr ? "Yayınlar" : "Publications"} description={tr ? "Güvenlik, bilgi ve teknoloji üzerine makaleler, kitaplar ve kitap bölümleri. Her çalışmanın bibliyografik bilgilerine ve kısa tanıtımına buradan ulaşabilirsiniz." : "Articles, books, and chapters on security, information, and technology. Explore the bibliographic record and a short introduction to each work."} visual="knowledge" links={[{label:tr ? "Kitaplar" : "Books",href:"#books"},{label:tr ? "Makaleler ve bölümler" : "Articles & chapters",href:"#articles"}]} />
+    {books.length > 0 && <section id="books" className="shell books-section">
       <p className="section-index">01</p>
       <h2>{tr ? "Kitaplar" : "Books"}</h2>
       <div className="books-grid">{books.map((book) => <article key={book.id} id={book.id}>
@@ -33,10 +30,10 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
         {book.sourceUrl && <a className="book-source" href={book.sourceUrl}>{tr ? "Kaynak kaydı" : "Source record"} ↗</a>}
       </article>)}</div>
     </section>}
-    <section className="shell archive-section">
+    <section id="articles" className="shell archive-section">
       <p className="section-index">02</p>
       <h2 className="archive-title">{tr ? "Makaleler ve kitap bölümleri" : "Articles and book chapters"}</h2>
-      <PublicationsFilter lang={lang} items={archive} />
+      <p className="archive-note">{tr ? "Erişilebilen yayın kayıtlarından hazırlanan özgün özetler ile tam özeti bulunmayan eserlerin kapsamını anlatan konu tanıtımları ayrı etiketlenmiştir." : "Editorial summaries based on available publication records are distinguished from topic overviews where a full abstract was not available."}</p><PublicationsFilter lang={lang} items={archive} />
     </section>
-  </main></PageShell>;
+  <InteriorOutro lang={lang} title={tr ? "Fikirden uygulamaya." : "From ideas to practice."} description={tr ? "Araştırmanın mühendislik ve teknoloji projeleriyle buluştuğu çalışmaları keşfedin." : "Explore the work where research meets engineering and technology projects."} href={`/${lang}/projects`} label={tr ? "Projeleri incele" : "Explore projects"} /></main></PageShell>;
 }
