@@ -93,7 +93,7 @@ export const education: Education[] = [
 export const profile = {
   name: "Dr. Hakan Yıldırım",
   title: { en: "Part-Time Faculty Member · Computer Engineering", tr: "Yarı Zamanlı Öğretim Üyesi · Bilgisayar Mühendisliği" },
-  email: "hakanyildirim72@gmail.com.tr",
+  email: "hakanyildirim72@gmail.com",
   cvPath: "/hakan-yildirim-cv.pdf",
   links: [
     { label: "ORCID", href: "https://orcid.org/0000-0002-5959-2691" },

@@ -50,7 +50,7 @@ def draw_cover() -> bytes:
 
     line("HAKAN YILDIRIM", 23, "ArialCV-Bold", gap=4)
     line("Dr. Öğretim Üyesi · Bilgisayar Mühendisliği", 11, "ArialCV-Bold")
-    line("E-posta: hakanyildirim72@gmail.com.tr", 10)
+    line("E-posta: hakanyildirim72@gmail.com", 10)
 
     section("Öğrenim Bilgisi")
     line("Doktora · Piri Reis Üniversitesi · Deniz Ulaştırma İşletme Mühendisliği · 2012–2018", 10, "ArialCV-Bold")
