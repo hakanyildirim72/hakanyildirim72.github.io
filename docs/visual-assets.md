@@ -1,5 +1,15 @@
 # Portfolio visual assets
 
+## Open editorial hero — 2026-10-05
+
+- File: `public/images/research-editorial.png`
+- Mode: built-in ImageGen generation.
+- Replaces the large fingerprint card in the home hero after the user's design feedback. The open book is conceptual, not a reproduction of an authored book cover. A separate, factual selected-book link uses the existing publication record. The portrait remains a small supporting profile link.
+
+### Final generation prompt
+
+Use case: stylized-concept. Asset type: academic portfolio hero artwork, an airy editorial still-life that blends into a warm ivory website background. A beautiful open book with blank ivory pages, its pages gently fanning upward in a subtle architectural wave, on a very thin satin-black rectangular plinth. Beside it, one small restrained sculptural object made of three intersecting brushed brass rings, suggesting connected knowledge and engineering. Only these two objects, considered composition, photographed from a slightly elevated three-quarter angle. Warm ivory seamless background #f8f7f3 across every edge, soft directional daylight, delicate realistic shadows, natural paper fibers, satin black and muted golden yellow accents #ffb83e. The book is the main subject and sits slightly left of center, the rings to its right; generous empty space above and around, 3:2 landscape framing. Sophisticated academic editorial photography, calm and tactile, not a futuristic tech advertisement. No text, no print on pages, no logos, no watermarks, no people, no fingerprint, no padlocks, no blue, no neon, no thick surrounding frame. Conceptual artwork, not a photograph of an actual authored book or research apparatus.
+
 ## Supporting portrait — 2026-10-05
 
 - File: `public/images/hakan-yildirim-portrait.png`

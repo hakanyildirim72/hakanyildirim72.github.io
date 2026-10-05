@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, BookOpen, Download, FileText, Globe2 } from "lucide-react";
+import { ArrowDown, ArrowUpRight, BookOpen, Download, FileText } from "lucide-react";
 import Image from "next/image";
 import { TopicIcon } from "@/components/topic-icon";
 import { notFound } from "next/navigation";
@@ -15,6 +15,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const lang = rawLang as Language;
   const isTr = lang === "tr";
   const selectedPublications = publications.filter((item) => item.selected).slice(0, 3);
+  const featuredBook = selectedPublications.find((item) => item.type === "book");
   const selectedProjects = projects.filter((item) => item.selected).slice(0, 3);
   const researchLinks = ["publications#dual-key-2026", "publications#digital-evidence-2026", "publications#digital-risk-2026", "projects"];
 
@@ -33,16 +34,22 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
             </div>
             <div className="hero-bottom"><div className="social-circles"><a href={profile.links.find((link) => link.label === "LinkedIn")?.href} aria-label="LinkedIn">in</a><a href={profile.links.find((link) => link.label === "ORCID")?.href} aria-label="ORCID">iD</a><a href={`/${lang}/contact`} aria-label={isTr ? "İletişim" : "Contact"}>@</a></div><a className="scroll-link" href="#research">{isTr ? "Araştırmayı keşfet" : "Explore the research"}<ArrowDown size={17} /></a></div>
           </div>
-          <figure className="hero-visual">
-            <div className="hero-art"><Image src="/images/digital-identity-gold.png" alt={isTr ? "Sarı zemin üzerinde, dijital kimliği temsil eden siyah metal parmak izi heykeli; kavramsal görsel" : "Black metal fingerprint sculpture on a golden background, a conceptual illustration of digital identity"} width={1024} height={1280} priority unoptimized /><div className="hero-visual-label"><span>{isTr ? "ARAŞTIRMA × UYGULAMA" : "RESEARCH × PRACTICE"}</span><strong>{isTr ? "Güvenin\nmimarisi." : "Trust,\nby design."}</strong></div></div>
-            <span className="globe-badge" aria-hidden="true"><Globe2 size={34} strokeWidth={1.2} /></span>
-            <a className="portrait-chip" href={`/${lang}/about`}>
-              <Image className="profile-avatar" src="/images/hakan-yildirim-portrait.png" alt="Dr. Hakan Yıldırım" width={56} height={56} unoptimized />
+          <aside className="hero-editorial" aria-label={isTr ? "Araştırma ve akademik profil" : "Research and academic profile"}>
+            <div className="editorial-heading"><span>{isTr ? "ARAŞTIRMA × UYGULAMA" : "RESEARCH × PRACTICE"}</span><span aria-hidden="true">HY / 01</span></div>
+            <figure className="editorial-still-life">
+              <Image src="/images/research-editorial.png" alt={isTr ? "Açık bir kitap ve birbirine geçen pirinç halkalarla bilgi ve mühendisliği temsil eden kavramsal kompozisyon" : "Conceptual still-life of an open book and interlocking brass rings representing knowledge and engineering"} width={1536} height={1024} priority unoptimized />
+              <figcaption>{isTr ? "Bilgi, bağlantı, araştırma. / Kavramsal görsel" : "Knowledge, connection, research. / Conceptual artwork"}</figcaption>
+            </figure>
+            {featuredBook && <a className="hero-reading" href={`/${lang}/publications#${featuredBook.id}`}>
+              <span>{isTr ? "SEÇİLİ KİTAP" : "SELECTED BOOK"} / {featuredBook.year}</span>
+              <div><h2>{featuredBook.title}</h2><ArrowUpRight size={26} strokeWidth={1.4} aria-hidden="true" /></div>
+            </a>}
+            <a className="editorial-profile" href={`/${lang}/about`}>
+              <Image className="profile-avatar" src="/images/hakan-yildirim-portrait.png" alt="" width={44} height={44} unoptimized />
               <span><strong>Dr. Hakan Yıldırım</strong><span>{isTr ? "Akademik profil" : "Academic profile"}</span></span>
-              <ArrowUpRight size={18} strokeWidth={1.5} aria-hidden="true" />
+              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
-            <figcaption><span>{isTr ? "Dijital kimlik / Kavramsal görsel" : "Digital identity / Conceptual artwork"}</span><span>01 — HY</span></figcaption>
-          </figure>
+          </aside>
         </section>
 
         <section id="research" className="research-band">
