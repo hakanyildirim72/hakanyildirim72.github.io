@@ -1,5 +1,16 @@
 # Portfolio visual assets
 
+## Supporting portrait — 2026-10-05
+
+- File: `public/images/hakan-yildirim-portrait.png`
+- Mode: built-in ImageGen photo edit, based on the photograph supplied by the user as Hakan Yıldırım's portrait.
+- Treatment: reduced haze and color cast, balanced exposure, and a quiet ivory background. AI-assisted restoration; not a claim that new fine detail was recovered from the original.
+- Placement: 56px circular portrait (48px on small screens) in the home hero's academic-profile link, and 96px in the About identity card. The conceptual research artwork remains the dominant visual.
+
+### Final edit prompt
+
+Use case: identity-preserve photo restoration. Edit the supplied photograph of Hakan Yildirim for a small academic website avatar. Faithfully preserve this exact man's facial geometry, age, expression, hairline, short salt-and-pepper beard, gaze, dark shirt and original pose. Only gently reduce the blue-white haze/lens flare, rebalance exposure and white balance, recover restrained natural contrast, and reduce color noise. No beautification, no face reshaping, no de-aging, no artificial skin smoothing, no invented detailed facial features, no change of clothing or hairstyle. Keep soft authentic photographic detail because the source is low clarity; do not hallucinate ultra-sharp detail. Replace the dark outer circular screenshot border and the distracting wall with a quiet continuous warm ivory #f0ede5 background, yielding a square head-and-shoulders image with ample margin around the hair and chin suitable for a circular crop. Natural muted warm-neutral color, not orange skin. No text, no decorative frame, no watermark. This is a conservative restoration of the provided real person, not a new portrait.
+
 ## Warm editorial redesign — 2026-10-05
 
 Built-in ImageGen mode. Both images are original conceptual artworks, not portraits, actual devices, biometric records, book covers, or evidence of research results. The visual direction follows the user-supplied reference: warm ivory, black, golden yellow, large typography, and sculptural rounded image panels. All existing academic content and summaries remain unchanged.

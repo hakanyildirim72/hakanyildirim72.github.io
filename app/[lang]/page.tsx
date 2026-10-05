@@ -36,7 +36,11 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <figure className="hero-visual">
             <div className="hero-art"><Image src="/images/digital-identity-gold.png" alt={isTr ? "Sarı zemin üzerinde, dijital kimliği temsil eden siyah metal parmak izi heykeli; kavramsal görsel" : "Black metal fingerprint sculpture on a golden background, a conceptual illustration of digital identity"} width={1024} height={1280} priority unoptimized /><div className="hero-visual-label"><span>{isTr ? "ARAŞTIRMA × UYGULAMA" : "RESEARCH × PRACTICE"}</span><strong>{isTr ? "Güvenin\nmimarisi." : "Trust,\nby design."}</strong></div></div>
             <span className="globe-badge" aria-hidden="true"><Globe2 size={34} strokeWidth={1.2} /></span>
-            <a className="art-link" href={`/${lang}/about`} aria-label={isTr ? "Dr. Hakan Yıldırım hakkında" : "About Dr. Hakan Yıldırım"}><ArrowUpRight size={34} strokeWidth={1.4} /></a>
+            <a className="portrait-chip" href={`/${lang}/about`}>
+              <Image className="profile-avatar" src="/images/hakan-yildirim-portrait.png" alt="Dr. Hakan Yıldırım" width={56} height={56} unoptimized />
+              <span><strong>Dr. Hakan Yıldırım</strong><span>{isTr ? "Akademik profil" : "Academic profile"}</span></span>
+              <ArrowUpRight size={18} strokeWidth={1.5} aria-hidden="true" />
+            </a>
             <figcaption><span>{isTr ? "Dijital kimlik / Kavramsal görsel" : "Digital identity / Conceptual artwork"}</span><span>01 — HY</span></figcaption>
           </figure>
         </section>
