@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/site-content";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dr-hakan-yildirim.yldrma423.chatgpt.site";
   const pages = ["", "/about", "/publications", "/projects", "/experience", "/contact"];

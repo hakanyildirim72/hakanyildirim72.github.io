@@ -4,6 +4,22 @@ A bilingual academic portfolio for cybersecurity, electrical and electronic
 engineering, and technology projects. English is the default language; Turkish
 pages mirror the same route structure.
 
+Live website: https://hakanyildirim72.github.io
+
+## GitHub Pages
+
+The `main` branch is published automatically through GitHub Actions. Every language
+page and project detail is exported as static HTML, with interactive publication
+filters retained. No sign-in or backend service is needed.
+
+```bash
+npm ci
+npm run build:pages
+```
+
+The generated website is in `out/`. The existing `npm run build` command remains
+available for the original Sites hosting environment.
+
 ## Content
 
 Verified portfolio data lives in `lib/site-content.ts`. Add:
