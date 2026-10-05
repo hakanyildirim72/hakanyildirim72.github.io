@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { BookOpen } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { PublicationsFilter } from "@/components/publications-filter";
 import { publications, type Language } from "@/lib/site-content";
@@ -24,7 +25,7 @@ export default async function PublicationsPage({ params }: { params: Promise<{ l
       <p className="section-index">01</p>
       <h2>{tr ? "Kitaplar" : "Books"}</h2>
       <div className="books-grid">{books.map((book) => <article key={book.id} id={book.id}>
-        <span>{book.year}</span>
+        <div className="book-card-top"><BookOpen size={28} strokeWidth={1.4} aria-hidden="true" /><span>{book.year}</span></div>
         <h3>{book.title}</h3>
         <p>{book.authors.join(", ")}</p>
         <p>{book.venue}</p>
